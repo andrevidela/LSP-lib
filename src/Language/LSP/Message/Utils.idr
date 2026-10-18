@@ -6,33 +6,9 @@ module Language.LSP.Message.Utils
 import public Data.OneOf
 import public JSON.Simple
 import public JSON.Simple.Derive
+import public JSON.RPC
 
 %default total
-
-||| Singleton type that models `null` in JSON.
-public export
-data Null = MkNull
-
-public export
-Eq Null where
-  MkNull == MkNull = True
-
-public export
-Ord Null where
-  compare MkNull MkNull = EQ
-
-public export
-Show Null where
-  show MkNull = "null"
-
-export
-ToJSON Null where
-  toJSON MkNull = JNull
-
-export
-FromJSON Null where
-  fromJSON JNull = pure MkNull
-  fromJSON _ = Left neutral
 
 ||| Converts an `UntaggedEither` value to the isomorphic value in `Either`.
 public export
@@ -43,8 +19,8 @@ toEither (There (Here x)) = Right x
 ||| Converts an `Either` value to the isomorphic value in `UntaggedEither`.
 public export
 fromEither : Either a b -> OneOf [a, b]
-fromEither (Left x)  = make x
-fromEither (Right x) = make x
+fromEither (Left x)  = Here x
+fromEither (Right x) = There (Here x)
 
 public export
 toMaybe : OneOf [a, Null] -> Maybe a
@@ -83,8 +59,8 @@ parseConstraints :
   Parser JSON (OneOf as)
 parseConstraints {as = []} = const $ fail "expected at least one element"
 parseConstraints {as = (x :: xs)} @{(c, cs)}
-  = let xx = map @{ParserF} (OneOf.There {x} ) (parseConstraints @{cs})
-        yy = map @{ParserF} (OneOf.Here {xs}) (fromJSON @{c})
+  = let xx = map @{ParserF} (There {x}) (parseConstraints @{cs})
+        yy = map @{ParserF} (Here {xs}) (fromJSON @{c})
     in xx <|> yy
 
 export

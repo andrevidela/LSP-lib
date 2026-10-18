@@ -39,6 +39,7 @@ import Language.LSP.Message.Utils
 import Language.LSP.Message.Window
 import Language.LSP.Message.Workspace
 import Language.Reflection
+import JSON.RPC
 
 %language ElabReflection
 %default total
@@ -408,6 +409,9 @@ namespace ErrorCodes
     | JSONRPCReserved Int
     | LSPReserved Int
     | Custom Int
+
+export
+toErrorCode : ErrorCodes -> ErrorCode
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#responseMessage
 public export
