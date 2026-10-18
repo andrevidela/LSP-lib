@@ -410,8 +410,22 @@ namespace ErrorCodes
     | LSPReserved Int
     | Custom Int
 
+||| Convert from error codes as they are defined in
+||| LSP to error codes as they are defined in JSONRPC
 export
 toErrorCode : ErrorCodes -> ErrorCode
+toErrorCode ParseError = ParseError
+toErrorCode InvalidRequest = InvalidRequest
+toErrorCode MethodNotFound = MethodNotFound
+toErrorCode InvalidParams = InvalidParams
+toErrorCode InternalError = InternalError
+toErrorCode ServerNotInitialized = ServerError (-32002)
+toErrorCode UnknownErrorCode = ServerError (-32001)
+toErrorCode ContentModified = CustomError (-32801)
+toErrorCode RequestCancelled = CustomError (-32800)
+toErrorCode (JSONRPCReserved i) = ServerError (cast i)
+toErrorCode (LSPReserved i) = CustomError (cast i)
+toErrorCode (Custom i) = CustomError (cast i)
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#responseMessage
 public export

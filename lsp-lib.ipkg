@@ -10,6 +10,7 @@ depends = contrib >= 0.7.0, json-simple, jsonrpc
 sourcedir = "src"
 
 modules = Data.Hex
+        , Data.OneOf
         , Data.URI
         , Language.LSP.Message
         , Language.LSP.Message.CallHierarchy
