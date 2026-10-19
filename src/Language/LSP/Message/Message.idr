@@ -241,6 +241,7 @@ ResponseResult WorkspaceApplyEdit                  = ApplyWorkspaceEditResponse
 ResponseResult TextDocumentCompletion              = OneOf [List CompletionItem, CompletionList, Null]
 ResponseResult WorkspaceCodeLensRefresh            = Maybe Null
 
+export
 findNotificationImpl : (method : Method from Notification) -> ToJSON (MessageParams method)
 findNotificationImpl Initialized = %search
 findNotificationImpl Exit = %search
@@ -262,6 +263,7 @@ findNotificationImpl TextDocumentPublishDiagnostics = %search
 findNotificationImpl CancelRequest = %search
 findNotificationImpl Progress = %search
 
+export
 findRequestImpl : (method : Method from Request) -> ToJSON (MessageParams method)
 findRequestImpl Initialize = %search
 findRequestImpl Shutdown = %search
@@ -313,6 +315,7 @@ findRequestImpl WorkspaceApplyEdit = %search
 findRequestImpl TextDocumentCompletion = %search
 findRequestImpl WorkspaceCodeLensRefresh = %search
 
+export
 findResultImpl : (method : Method from Request) -> ToJSON (ResponseResult method)
 findResultImpl Initialize = %search
 findResultImpl Shutdown = %search
