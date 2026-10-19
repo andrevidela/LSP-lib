@@ -117,6 +117,7 @@ MessageParams CancelRequest                       = CancelParams
 MessageParams Progress                            = OneOf [WorkDoneProgressBegin, WorkDoneProgressReport, WorkDoneProgressEnd]
 
 -- Hacky, but avoids having to carry a FromJSON (MessageParams method) inside sigma types
+export
 findParamsImpl : (method : Method from type) -> FromJSON (MessageParams method)
 findParamsImpl Initialize                          = %search
 findParamsImpl Initialized                         = %search
