@@ -12,4 +12,4 @@ record RegularExpressionsClientCapabilities where
   constructor MkRegularExpressionsClientCapabilities
   engine  : String
   version : Maybe String
-%runElab derive "RegularExpressionsClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "RegularExpressionsClientCapabilities" [FromJSONLSP, ToJSONLSP]

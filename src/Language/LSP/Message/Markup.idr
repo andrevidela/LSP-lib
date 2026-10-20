@@ -35,7 +35,7 @@ record MarkupContent where
   constructor MkMarkupContent
   kind : MarkupKind
   value : String
-%runElab derive "MarkupContent" [FromJSON, ToJSON]
+%runElab derive "MarkupContent" [FromJSONLSP, ToJSONLSP]
 
 namespace MarkedString
   ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_hover
@@ -44,7 +44,7 @@ namespace MarkedString
     constructor MkMarkedStringWithLanguage
     language : String
     value : String
-  %runElab derive "MarkedStringWithLanguage" [FromJSON, ToJSON]
+  %runElab derive "MarkedStringWithLanguage" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_hover
 public export
@@ -57,4 +57,4 @@ record MarkdownClientCapabilities where
   constructor MkMarkdownClientCapabilities
   parser  : String
   version : Maybe String
-%runElab derive "MarkdownClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "MarkdownClientCapabilities" [FromJSONLSP, ToJSONLSP]

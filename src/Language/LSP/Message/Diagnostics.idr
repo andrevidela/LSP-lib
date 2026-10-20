@@ -50,14 +50,14 @@ record DiagnosticRelatedInformation where
   constructor MkDiagnosticRelatedInformation
   location : Location
   message  : String
-%runElab derive "DiagnosticRelatedInformation" [FromJSON, ToJSON]
+%runElab derive "DiagnosticRelatedInformation" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#diagnostic
 public export
 record CodeDescription where
   constructor MkCodeDescription
   href : URI
-%runElab derive "CodeDescription" [FromJSON, ToJSON]
+%runElab derive "CodeDescription" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#diagnostic
 public export
@@ -80,7 +80,7 @@ namespace PublishDiagnosticsClientCapabilities
   record TagSupport where
     constructor MkTagSupport
     valueSet : List DiagnosticTag
-  %runElab derive "TagSupport" [FromJSON, ToJSON]
+  %runElab derive "TagSupport" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_publishDiagnostics
 public export
@@ -91,7 +91,7 @@ record PublishDiagnosticsClientCapabilities where
   versionSupport         : Maybe Bool
   codeDescriptionSupport : Maybe Bool
   dataSupport            : Maybe Bool
-%runElab derive "PublishDiagnosticsClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "PublishDiagnosticsClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_publishDiagnostics
 public export
@@ -100,4 +100,4 @@ record PublishDiagnosticsParams where
   uri         : DocumentURI
   version     : Maybe Int
   diagnostics : List Diagnostic
-%runElab derive "PublishDiagnosticsParams" [FromJSON, ToJSON]
+%runElab derive "PublishDiagnosticsParams" [FromJSONLSP, ToJSONLSP]

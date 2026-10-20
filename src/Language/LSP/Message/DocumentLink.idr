@@ -16,7 +16,7 @@ record DocumentLinkClientCapabilities where
   constructor MkDocumentLinkClientCapabilities
   dynamicRegistration : Maybe Bool
   tooltipSupport      : Maybe Bool
-%runElab derive "DocumentLinkClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "DocumentLinkClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_documentLink
 public export
@@ -24,7 +24,7 @@ record DocumentLinkOptions where
   constructor MkDocumentLinkOptions
   workDoneProgress : Maybe Bool
   resolveProvider  : Maybe Bool
-%runElab derive "DocumentLinkOptions" [FromJSON, ToJSON]
+%runElab derive "DocumentLinkOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_documentLink
 public export
@@ -33,7 +33,7 @@ record DocumentLinkRegistrationOptions where
   workDoneProgress : Maybe Bool
   resolveProvider  : Maybe Bool
   documentSelector : OneOf [DocumentSelector, Null]
-%runElab derive "DocumentLinkRegistrationOptions" [FromJSON, ToJSON]
+%runElab derive "DocumentLinkRegistrationOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_documentLink
 public export
@@ -42,7 +42,7 @@ record DocumentLinkParams where
   workDoneToken      : Maybe ProgressToken
   partialResultToken : Maybe ProgressToken
   textDocument       : TextDocumentIdentifier
-%runElab derive "DocumentLinkParams" [FromJSON, ToJSON]
+%runElab derive "DocumentLinkParams" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_documentLink
 public export

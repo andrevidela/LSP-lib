@@ -15,7 +15,7 @@ public export
 record CodeLensClientCapabilities where
   constructor MkCodeLensClientCapabilities
   dynamicRegistration : Maybe Bool
-%runElab derive "CodeLensClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "CodeLensClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_codeLens
 public export
@@ -23,7 +23,7 @@ record CodeLensOptions where
   constructor MkCodeLensOptions
   workDoneProgress : Maybe Bool
   resolveProvider  : Maybe Bool
-%runElab derive "CodeLensOptions" [FromJSON, ToJSON]
+%runElab derive "CodeLensOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_codeLens
 public export
@@ -32,7 +32,7 @@ record CodeLensRegistrationOptions where
   workDoneProgress : Maybe Bool
   resolveProvider  : Maybe Bool
   documentSelector : OneOf [DocumentSelector, Null]
-%runElab derive "CodeLensRegistrationOptions" [FromJSON, ToJSON]
+%runElab derive "CodeLensRegistrationOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_codeLens
 public export
@@ -41,7 +41,7 @@ record CodeLensParams where
   workDoneToken      : Maybe ProgressToken
   partialResultToken : Maybe ProgressToken
   textDocument       : TextDocumentIdentifier
-%runElab derive "CodeLensParams" [FromJSON, ToJSON]
+%runElab derive "CodeLensParams" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_codeLens
 public export
@@ -57,4 +57,4 @@ public export
 record CodeLensWorkspaceClientCapabilities where
   constructor MkCodeLensWorkspaceClientCapabilities
   refreshSupport : Maybe Bool
-%runElab derive "CodeLensWorkspaceClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "CodeLensWorkspaceClientCapabilities" [FromJSONLSP, ToJSONLSP]

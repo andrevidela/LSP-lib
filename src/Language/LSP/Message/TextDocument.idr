@@ -14,7 +14,7 @@ public export
 record TextDocumentIdentifier where
   constructor MkTextDocumentIdentifier
   uri : DocumentURI
-%runElab derive "TextDocumentIdentifier" [FromJSON, ToJSON]
+%runElab derive "TextDocumentIdentifier" [FromJSONLSP, ToJSONLSP]
 
 export
 FromJSONKey TextDocumentIdentifier where
@@ -26,7 +26,7 @@ record VersionedTextDocumentIdentifier where
   constructor MkVersionedTextDocumentIdentifier
   uri     : DocumentURI
   version : Int
-%runElab derive "VersionedTextDocumentIdentifier" [FromJSON, ToJSON]
+%runElab derive "VersionedTextDocumentIdentifier" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#versionedTextDocumentIdentifier
 public export
@@ -34,7 +34,7 @@ record OptionalVersionedTextDocumentIdentifier where
   constructor MkOptionalVersionedTextDocumentIdentifier
   uri     : DocumentURI
   version : Maybe Int
-%runElab derive "OptionalVersionedTextDocumentIdentifier" [FromJSON, ToJSON]
+%runElab derive "OptionalVersionedTextDocumentIdentifier" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocumentItem
 public export
@@ -44,7 +44,7 @@ record TextDocumentItem where
   languageId : String
   version    : Int
   text       : String
-%runElab derive "TextDocumentItem" [FromJSON, ToJSON]
+%runElab derive "TextDocumentItem" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocumentPositionParams
 public export
@@ -52,7 +52,7 @@ record TextDocumentPositionParams where
   constructor MkTextDocumentPositionParams
   textDocument : TextDocumentIdentifier
   position     : Position
-%runElab derive "TextDocumentPositionParams" [FromJSON, ToJSON]
+%runElab derive "TextDocumentPositionParams" [FromJSONLSP, ToJSONLSP]
 
 namespace TextDocumentSyncKind
   ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_synchronization
@@ -77,7 +77,7 @@ public export
 record DidOpenTextDocumentParams where
   constructor MkDidOpenTextDocumentParams
   textDocument : TextDocumentItem
-%runElab derive "DidOpenTextDocumentParams" [FromJSON, ToJSON]
+%runElab derive "DidOpenTextDocumentParams" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#documentFilter
 public export
@@ -86,7 +86,7 @@ record DocumentFilter where
   language : Maybe String
   scheme   : Maybe String
   pattern  : Maybe String
-%runElab derive "DocumentFilter" [FromJSON, ToJSON]
+%runElab derive "DocumentFilter" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#documentFilter
 public export
@@ -97,14 +97,14 @@ public export
 record TextDocumentRegistrationOptions where
   constructor MkTextDocumentRegistrationOptions
   documentSelector : OneOf [DocumentSelector, Null]
-%runElab derive "TextDocumentRegistrationOptions" [FromJSON, ToJSON]
+%runElab derive "TextDocumentRegistrationOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocumentRegistrationOptions
 public export
 record TextDocumentChangeRegistrationOptions where
   constructor MkTextDocumentChangeRegistrationOptions
   syncKind : TextDocumentSyncKind
-%runElab derive "TextDocumentChangeRegistrationOptions" [FromJSON, ToJSON]
+%runElab derive "TextDocumentChangeRegistrationOptions" [FromJSONLSP, ToJSONLSP]
 
 namespace DidChangeTextDocumentParams
   ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_didChange
@@ -112,7 +112,7 @@ namespace DidChangeTextDocumentParams
   record TextDocumentContentChangeEvent where
     constructor MkTextDocumentContentChangeEvent
     text : String
-  %runElab derive "TextDocumentContentChangeEvent" [FromJSON, ToJSON]
+  %runElab derive "TextDocumentContentChangeEvent" [FromJSONLSP, ToJSONLSP]
 
   ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_didChange
   public export
@@ -121,7 +121,7 @@ namespace DidChangeTextDocumentParams
     range       : Range
     rangeLength : Maybe Int
     text        : String
-  %runElab derive "TextDocumentContentChangeEventWithRange" [FromJSON, ToJSON]
+  %runElab derive "TextDocumentContentChangeEventWithRange" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_didChange
 public export
@@ -129,7 +129,7 @@ record DidChangeTextDocumentParams where
   constructor MkDidChangeTextDocumentParams
   textDocument   : VersionedTextDocumentIdentifier
   contentChanges : List (OneOf [TextDocumentContentChangeEvent, TextDocumentContentChangeEventWithRange])
-%runElab derive "DidChangeTextDocumentParams" [FromJSON, ToJSON]
+%runElab derive "DidChangeTextDocumentParams" [FromJSONLSP, ToJSONLSP]
 
 namespace TextDocumentSaveReason
   ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_willSave
@@ -155,14 +155,14 @@ record WillSaveTextDocumentParams where
   constructor MkWillSaveTextDocumentParams
   textDocument : TextDocumentIdentifier
   reason       : TextDocumentSaveReason
-%runElab derive "WillSaveTextDocumentParams" [FromJSON, ToJSON]
+%runElab derive "WillSaveTextDocumentParams" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_didSave
 public export
 record SaveOptions where
   constructor MkSaveOptions
   includeText : Maybe Bool
-%runElab derive "SaveOptions" [FromJSON, ToJSON]
+%runElab derive "SaveOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_didSave
 public export
@@ -170,7 +170,7 @@ record TextDocumentSaveRegistrationOptions where
   constructor MkTextDocumentSaveRegistrationOptions
   documentSelector : OneOf [DocumentSelector, Null]
   includeText      : Maybe Bool
-%runElab derive "TextDocumentSaveRegistrationOptions" [FromJSON, ToJSON]
+%runElab derive "TextDocumentSaveRegistrationOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_didSave
 public export
@@ -178,14 +178,14 @@ record DidSaveTextDocumentParams where
   constructor MkDidSaveTextDocumentParams
   textDocument : TextDocumentIdentifier
   text         : Maybe String
-%runElab derive "DidSaveTextDocumentParams" [FromJSON, ToJSON]
+%runElab derive "DidSaveTextDocumentParams" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_didClose
 public export
 record DidCloseTextDocumentParams where
   constructor MkDidCloseTextDocumentParams
   textDocument : TextDocumentIdentifier
-%runElab derive "DidCloseTextDocumentParams" [FromJSON, ToJSON]
+%runElab derive "DidCloseTextDocumentParams" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_didClose
 public export
@@ -195,7 +195,7 @@ record TextDocumentSyncClientCapabilities where
   willSave            : Maybe Bool
   willSaveWaitUntil   : Maybe Bool
   didSave             : Maybe Bool
-%runElab derive "TextDocumentSyncClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "TextDocumentSyncClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_didClose
 public export
@@ -206,4 +206,4 @@ record TextDocumentSyncOptions where
   willSave          : Maybe Bool
   willSaveWaitUntil : Maybe Bool
   save              : Maybe (OneOf [Bool, SaveOptions])
-%runElab derive "TextDocumentSyncOptions" [FromJSON, ToJSON]
+%runElab derive "TextDocumentSyncOptions" [FromJSONLSP, ToJSONLSP]

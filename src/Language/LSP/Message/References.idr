@@ -15,14 +15,14 @@ public export
 record ReferenceClientCapabilities where
   constructor MkReferenceClientCapabilities
   dynamicRegistration : Maybe Bool
-%runElab derive "ReferenceClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "ReferenceClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_references
 public export
 record ReferenceOptions where
   constructor MkReferenceOptions
   workDoneProgress : Maybe Bool
-%runElab derive "ReferenceOptions" [FromJSON, ToJSON]
+%runElab derive "ReferenceOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_references
 public export
@@ -30,14 +30,14 @@ record ReferenceRegistrationOptions where
   constructor MkReferenceRegistrationOptions
   workDoneProgress : Maybe Bool
   documentSelector : OneOf [DocumentSelector, Null]
-%runElab derive "ReferenceRegistrationOptions" [FromJSON, ToJSON]
+%runElab derive "ReferenceRegistrationOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_references
 public export
 record ReferenceContext where
   constructor MkReferenceContext
   includeDeclaration : Bool
-%runElab derive "ReferenceContext" [FromJSON, ToJSON]
+%runElab derive "ReferenceContext" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_references
 public export
@@ -48,4 +48,4 @@ record ReferenceParams where
   textDocument       : TextDocumentIdentifier
   position           : Location.Position
   context            : ReferenceContext
-%runElab derive "ReferenceParams" [FromJSON, ToJSON]
+%runElab derive "ReferenceParams" [FromJSONLSP, ToJSONLSP]

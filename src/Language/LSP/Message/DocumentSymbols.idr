@@ -120,14 +120,14 @@ namespace DocumentSymbolClientCapabilities
   record DocumentSymbolKind where
     constructor MkDocumentSymbolKind
     valueSet : Maybe (List SymbolKind)
-  %runElab derive "DocumentSymbolKind" [FromJSON, ToJSON]
+  %runElab derive "DocumentSymbolKind" [FromJSONLSP, ToJSONLSP]
 
   ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_documentSymbol
   public export
   record DocumentSymbolTag where
     constructor MkDocumentSymbolTag
     valueSet : Maybe (List SymbolTag)
-  %runElab derive "DocumentSymbolTag" [FromJSON, ToJSON]
+  %runElab derive "DocumentSymbolTag" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_documentSymbol
 public export
@@ -138,7 +138,7 @@ record DocumentSymbolClientCapabilities where
   hierarchicalDocumentSymbolSupport : Maybe Bool
   tagSupport                        : Maybe DocumentSymbolTag
   labelSupport                      : Maybe Bool
-%runElab derive "DocumentSymbolClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "DocumentSymbolClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_documentSymbol
 public export
@@ -146,7 +146,7 @@ record DocumentSymbolOptions where
   constructor MkDocumentSymbolOptions
   workDoneProgress : Maybe Bool
   label            : Maybe String
-%runElab derive "DocumentSymbolOptions" [FromJSON, ToJSON]
+%runElab derive "DocumentSymbolOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_documentSymbol
 public export
@@ -155,7 +155,7 @@ record DocumentSymbolRegistrationOptions where
   workDoneProgress : Maybe Bool
   documentSelector : OneOf [DocumentSelector, Null]
   label            : Maybe String
-%runElab derive "DocumentSymbolRegistrationOptions" [FromJSON, ToJSON]
+%runElab derive "DocumentSymbolRegistrationOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_documentSymbol
 public export
@@ -164,7 +164,7 @@ record DocumentSymbolParams where
   workDoneToken      : Maybe ProgressToken
   partialResultToken : Maybe ProgressToken
   textDocument       : TextDocumentIdentifier
-%runElab derive "DocumentSymbolParams" [FromJSON, ToJSON]
+%runElab derive "DocumentSymbolParams" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_documentSymbol
 public export
@@ -179,7 +179,7 @@ record DocumentSymbol where
   selectionRange : Range
   children       : Maybe (List DocumentSymbol)
 
-%runElab derive "DocumentSymbol" [FromJSON, ToJSON]
+%runElab derive "DocumentSymbol" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_documentSymbol
 public export
@@ -191,4 +191,4 @@ record SymbolInformation where
   deprecated    : Maybe Bool
   location      : Location
   containerName : Maybe String
-%runElab derive "SymbolInformation" [FromJSON, ToJSON]
+%runElab derive "SymbolInformation" [FromJSONLSP, ToJSONLSP]

@@ -16,14 +16,14 @@ record DeclarationClientCapabilities where
   constructor MkDeclarationClientCapabilities
   dynamicRegistration : Maybe Bool
   linkSupport         : Maybe Bool
-%runElab derive "DeclarationClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "DeclarationClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_declaration
 public export
 record DeclarationOptions where
   constructor MkDeclarationOptions
   workDoneProgress : Maybe Bool
-%runElab derive "DeclarationOptions" [FromJSON, ToJSON]
+%runElab derive "DeclarationOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_declaration
 public export
@@ -32,7 +32,7 @@ record DeclarationRegistrationOptions where
   workDoneProgress : Maybe Bool
   documentSelector : OneOf [DocumentSelector, Null]
   id               : Maybe String
-%runElab derive "DeclarationRegistrationOptions" [FromJSON, ToJSON]
+%runElab derive "DeclarationRegistrationOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_declaration
 public export
@@ -42,4 +42,4 @@ record DeclarationParams where
   partialResultToken : Maybe ProgressToken
   textDocument       : TextDocumentIdentifier
   position           : Position
-%runElab derive "DeclarationParams" [FromJSON, ToJSON]
+%runElab derive "DeclarationParams" [FromJSONLSP, ToJSONLSP]

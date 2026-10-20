@@ -15,14 +15,14 @@ public export
 record DocumentHighlightClientCapabilities where
   constructor MkDocumentHighlightClientCapabilities
   dynamicRegistration : Maybe Bool
-%runElab derive "DocumentHighlightClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "DocumentHighlightClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_documentHighlight
 public export
 record DocumentHighlightOptions where
   constructor MkDocumentHighlightOptions
   workDoneProgress : Maybe Bool
-%runElab derive "DocumentHighlightOptions" [FromJSON, ToJSON]
+%runElab derive "DocumentHighlightOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_documentHighlight
 public export
@@ -30,7 +30,7 @@ record DocumentHighlightRegistrationOptions where
   constructor MkDocumentHighlightRegistrationOptions
   workDoneProgress : Maybe Bool
   documentSelector : OneOf [DocumentSelector, Null]
-%runElab derive "DocumentHighlightRegistrationOptions" [FromJSON, ToJSON]
+%runElab derive "DocumentHighlightRegistrationOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_documentHighlight
 public export
@@ -40,7 +40,7 @@ record DocumentHighlightParams where
   partialResultToken : Maybe ProgressToken
   textDocument       : TextDocumentIdentifier
   position           : Position
-%runElab derive "DocumentHighlightParams" [FromJSON, ToJSON]
+%runElab derive "DocumentHighlightParams" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_documentHighlight
 namespace DocumentHighlightKind
@@ -68,4 +68,4 @@ record DocumentHighlight where
   constructor MkDocumentHighlight
   range : Range
   kind  : Maybe DocumentHighlightKind
-%runElab derive "DocumentHighlight" [FromJSON, ToJSON]
+%runElab derive "DocumentHighlight" [FromJSONLSP, ToJSONLSP]

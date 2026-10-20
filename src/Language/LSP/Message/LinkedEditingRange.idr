@@ -15,14 +15,14 @@ public export
 record LinkedEditingRangeClientCapabilities where
   constructor MkLinkedEditingRangeClientCapabilities
   dynamicRegistration : Maybe Bool
-%runElab derive "LinkedEditingRangeClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "LinkedEditingRangeClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_linkedEditingRange
 public export
 record LinkedEditingRangeOptions where
   constructor MkLinkedEditingRangesOptions
   workDoneProgress : Maybe Bool
-%runElab derive "LinkedEditingRangeOptions" [FromJSON, ToJSON]
+%runElab derive "LinkedEditingRangeOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_linkedEditingRange
 public export
@@ -31,7 +31,7 @@ record LinkedEditingRangeRegistrationOptions where
   workDoneProgress : Maybe Bool
   documentSelector : OneOf [DocumentSelector, Null]
   id               : Maybe Bool
-%runElab derive "LinkedEditingRangeRegistrationOptions" [FromJSON, ToJSON]
+%runElab derive "LinkedEditingRangeRegistrationOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_linkedEditingRange
 public export
@@ -40,7 +40,7 @@ record LinkedEditingRangeParams where
   workDoneToken : Maybe ProgressToken
   textDocument  : TextDocumentIdentifier
   position      : Position
-%runElab derive "LinkedEditingRangeParams" [FromJSON, ToJSON]
+%runElab derive "LinkedEditingRangeParams" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_linkedEditingRange
 public export
@@ -48,4 +48,4 @@ record LinkedEditingRanges where
   constructor MkLinkedEditingRanges
   ranges      : List Range
   wordPattern : Maybe String
-%runElab derive "LinkedEditingRanges" [FromJSON, ToJSON]
+%runElab derive "LinkedEditingRanges" [FromJSONLSP, ToJSONLSP]

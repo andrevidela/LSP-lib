@@ -83,7 +83,7 @@ record FileOperationsWorkspaceClientCapabilities where
   willRename          : Maybe Bool
   didDelete           : Maybe Bool
   willDelete          : Maybe Bool
-%runElab derive "FileOperationsWorkspaceClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "FileOperationsWorkspaceClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#initialize
 public export
@@ -100,7 +100,7 @@ record WorkspaceClientCapabilities where
   semanticTokens         : Maybe SemanticTokensWorkspaceClientCapabilities
   codeLens               : Maybe CodeLensWorkspaceClientCapabilities
   fileOperations         : Maybe FileOperationsWorkspaceClientCapabilities
-%runElab derive "WorkspaceClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "WorkspaceClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#initialize
 public export
@@ -109,7 +109,7 @@ record WindowClientCapabilities where
   workDoneProgress : Maybe Bool
   showMessage      : Maybe ShowMessageRequestClientCapabilities
   showDocument     : Maybe ShowDocumentClientCapabilities
-%runElab derive "WindowClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "WindowClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#initialize
 public export
@@ -117,7 +117,7 @@ record GeneralClientCapabilities where
   constructor MkGeneralClientCapabilities
   regularExpressions : Maybe RegularExpressionsClientCapabilities
   markdown           : Maybe MarkdownClientCapabilities
-%runElab derive "GeneralClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "GeneralClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#initialize
 public export
@@ -128,4 +128,4 @@ record ClientCapabilities where
   window       : Maybe WindowClientCapabilities
   general      : Maybe GeneralClientCapabilities
   experimental : Maybe JSON
-%runElab derive "ClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "ClientCapabilities" [FromJSONLSP, ToJSONLSP]

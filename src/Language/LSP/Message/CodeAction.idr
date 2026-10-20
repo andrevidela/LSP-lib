@@ -71,21 +71,21 @@ namespace CodeActionClientCapabilities
   record CodeActionKindValueSet where
     constructor MkCodeActionKindValueSet
     valueSet : List CodeActionKind
-  %runElab derive "CodeActionKindValueSet" [FromJSON, ToJSON]
+  %runElab derive "CodeActionKindValueSet" [FromJSONLSP, ToJSONLSP]
 
   ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_codeAction
   public export
   record CodeActionLiteralSupport where
     constructor MkCodeActionLiteralSupport
     codeActionKind : CodeActionKindValueSet
-  %runElab derive "CodeActionLiteralSupport" [FromJSON, ToJSON]
+  %runElab derive "CodeActionLiteralSupport" [FromJSONLSP, ToJSONLSP]
 
   ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_codeAction
   public export
   record ResolveSupport where
     constructor MkResolveSupport
     properties : List String
-  %runElab derive "ResolveSupport" [FromJSON, ToJSON]
+  %runElab derive "ResolveSupport" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_codeAction
 public export
@@ -98,7 +98,7 @@ record CodeActionClientCapabilities where
   dataSupport              : Maybe Bool
   resolveSupport           : Maybe ResolveSupport
   honorsChangeAnnotations  : Maybe Bool
-%runElab derive "CodeActionClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "CodeActionClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_codeAction
 public export
@@ -107,7 +107,7 @@ record CodeActionOptions where
   workDoneProgress : Maybe Bool
   codeActionKinds  : Maybe (List CodeActionKind)
   resolveProvider  : Maybe Bool
-%runElab derive "CodeActionOptions" [FromJSON, ToJSON]
+%runElab derive "CodeActionOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_codeAction
 public export
@@ -117,7 +117,7 @@ record CodeActionRegistrationOptions where
   codeActionKinds  : Maybe (List CodeActionKind)
   resolveProvider  : Maybe Bool
   documentSelector : OneOf [DocumentSelector, Null]
-%runElab derive "CodeActionRegistrationOptions" [FromJSON, ToJSON]
+%runElab derive "CodeActionRegistrationOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_codeAction
 public export
@@ -125,7 +125,7 @@ record CodeActionContext where
   constructor MkCodeActionContext
   diagnostics : List Diagnostic
   only        : Maybe (List CodeActionKind)
-%runElab derive "CodeActionContext" [FromJSON, ToJSON]
+%runElab derive "CodeActionContext" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_codeAction
 public export
@@ -136,7 +136,7 @@ record CodeActionParams where
   textDocument       : TextDocumentIdentifier
   range              : Range
   context            : CodeActionContext
-%runElab derive "CodeActionParams" [FromJSON, ToJSON]
+%runElab derive "CodeActionParams" [FromJSONLSP, ToJSONLSP]
 
 namespace CodeAction
   ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_codeAction
@@ -144,7 +144,7 @@ namespace CodeAction
   record Disabled where
     constructor MkDisabled
     reason : String
-  %runElab derive "Disabled" [FromJSON, ToJSON]
+  %runElab derive "Disabled" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_codeAction
 public export

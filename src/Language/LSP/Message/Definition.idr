@@ -16,14 +16,14 @@ record DefinitionClientCapabilities where
   constructor MkDefinitionClientCapabilities
   dynamicRegistration : Maybe Bool
   linkSupport         : Maybe Bool
-%runElab derive "DefinitionClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "DefinitionClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_definition
 public export
 record DefinitionOptions where
   constructor MkDefinitionOptions
   workDoneProgress : Maybe Bool
-%runElab derive "DefinitionOptions" [FromJSON, ToJSON]
+%runElab derive "DefinitionOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_definition
 public export
@@ -31,7 +31,7 @@ record DefinitionRegistrationOptions where
   constructor MkDefinitionRegistrationOptions
   workDoneProgress : Maybe Bool
   documentSelector : OneOf [DocumentSelector, Null]
-%runElab derive "DefinitionRegistrationOptions" [FromJSON, ToJSON]
+%runElab derive "DefinitionRegistrationOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_definition
 public export
@@ -41,7 +41,7 @@ record DefinitionParams where
   partialResultToken : Maybe ProgressToken
   textDocument       : TextDocumentIdentifier
   position           : Position
-%runElab derive "DefinitionParams" [FromJSON, ToJSON]
+%runElab derive "DefinitionParams" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_typeDefinition
 public export
@@ -49,14 +49,14 @@ record TypeDefinitionClientCapabilities where
   constructor MkTypeDefinitionClientCapabilities
   dynamicRegistration : Maybe Bool
   linkSupport         : Maybe Bool
-%runElab derive "TypeDefinitionClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "TypeDefinitionClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_typeDefinition
 public export
 record TypeDefinitionOptions where
   constructor MkTypeDefinitionOptions
   workDoneProgress : Maybe Bool
-%runElab derive "TypeDefinitionOptions" [FromJSON, ToJSON]
+%runElab derive "TypeDefinitionOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_typeDefinition
 public export
@@ -65,7 +65,7 @@ record TypeDefinitionRegistrationOptions where
   workDoneProgress : Maybe Bool
   documentSelector : OneOf [DocumentSelector, Null]
   id               : Maybe String
-%runElab derive "TypeDefinitionRegistrationOptions" [FromJSON, ToJSON]
+%runElab derive "TypeDefinitionRegistrationOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_typeDefinition
 public export
@@ -75,4 +75,4 @@ record TypeDefinitionParams where
   partialResultToken : Maybe ProgressToken
   textDocument       : TextDocumentIdentifier
   position           : Position
-%runElab derive "TypeDefinitionParams" [FromJSON, ToJSON]
+%runElab derive "TypeDefinitionParams" [FromJSONLSP, ToJSONLSP]

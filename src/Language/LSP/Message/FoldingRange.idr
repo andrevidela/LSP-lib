@@ -15,14 +15,14 @@ record FoldingRangeClientCapabilities where
   dynamicRegistration : Maybe Bool
   rangeLimit          : Maybe Int
   lineFoldingOnly     : Maybe Bool
-%runElab derive "FoldingRangeClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "FoldingRangeClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_foldingRange
 public export
 record FoldingRangeOptions where
   constructor MkFoldingRangeOptions
   workDoneProgress : Maybe Bool
-%runElab derive "FoldingRangeOptions" [FromJSON, ToJSON]
+%runElab derive "FoldingRangeOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_foldingRange
 public export
@@ -31,7 +31,7 @@ record FoldingRangeRegistrationOptions where
   workDoneProgress : Maybe Bool
   documentSelector : OneOf [DocumentSelector, Null]
   id               : Maybe String
-%runElab derive "FoldingRangeRegistrationOptions" [FromJSON, ToJSON]
+%runElab derive "FoldingRangeRegistrationOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_foldingRange
 public export
@@ -40,7 +40,7 @@ record FoldingRangeParams where
   workDoneToken      : Maybe ProgressToken
   partialResultToken : Maybe ProgressToken
   textDocument       : TextDocumentIdentifier
-%runElab derive "FoldingRangeParams" [FromJSON, ToJSON]
+%runElab derive "FoldingRangeParams" [FromJSONLSP, ToJSONLSP]
 
 namespace FoldingRangeKind
   ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_foldingRange
@@ -69,4 +69,4 @@ record FoldingRange where
   endLine        : Int
   endCharacter   : Maybe Int
   kind           : Maybe String
-%runElab derive "FoldingRange" [FromJSON, ToJSON]
+%runElab derive "FoldingRange" [FromJSONLSP, ToJSONLSP]

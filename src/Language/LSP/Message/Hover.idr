@@ -17,14 +17,14 @@ record HoverClientCapabilities where
   constructor MkHoverClientCapabilities
   dynamicRegistration : Maybe Bool
   contentFormat : Maybe (List MarkupKind)
-%runElab derive "HoverClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "HoverClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_hover
 public export
 record HoverOptions where
   constructor MkHoverOptions
   workDoneProgress : Maybe Bool
-%runElab derive "HoverOptions" [FromJSON, ToJSON]
+%runElab derive "HoverOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_hover
 public export
@@ -32,7 +32,7 @@ record HoverRegistrationOptions where
   constructor MkHoverRegistrationOptions
   workDoneProgress : Maybe Bool
   documentSelector : OneOf [DocumentSelector, Null]
-%runElab derive "HoverRegistrationOptions" [FromJSON, ToJSON]
+%runElab derive "HoverRegistrationOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_hover
 public export
@@ -41,7 +41,7 @@ record HoverParams where
   workDoneToken : Maybe ProgressToken
   textDocument : TextDocumentIdentifier
   position : Position
-%runElab derive "HoverParams" [FromJSON, ToJSON]
+%runElab derive "HoverParams" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_hover
 public export
@@ -49,4 +49,4 @@ record Hover where
   constructor MkHover
   contents : OneOf [MarkedString, List MarkedString, MarkupContent]
   range : Maybe Range
-%runElab derive "Hover" [FromJSON, ToJSON]
+%runElab derive "Hover" [FromJSONLSP, ToJSONLSP]

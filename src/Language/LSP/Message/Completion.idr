@@ -152,21 +152,21 @@ namespace CompletionItemClientCapabilities
   record CompletionItemTagSupportClientCapabilities where
     constructor MkCompletionItemTagSupportClientCapabilities
     valueSet : List CompletionItemTag
-  %runElab derive "CompletionItemTagSupportClientCapabilities" [FromJSON, ToJSON]
+  %runElab derive "CompletionItemTagSupportClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
   ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_completion
   public export
   record CompletionItemResolveSupportClientCapabilities where
     constructor MkCompletionItemResolveSupportClientCapabilities
     properties : List String
-  %runElab derive "CompletionItemResolveSupportClientCapabilities" [FromJSON, ToJSON]
+  %runElab derive "CompletionItemResolveSupportClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
   ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_completion
   public export
   record InsertTextModeSupport where
     constructor MkInsertTextModeSupport
     valueSet : List InsertTextMode
-  %runElab derive "InsertTextModeSupport" [FromJSON, ToJSON]
+  %runElab derive "InsertTextModeSupport" [FromJSONLSP, ToJSONLSP]
 
   ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_completion
   public export
@@ -181,14 +181,14 @@ namespace CompletionItemClientCapabilities
     insertReplaceSupport    : Maybe Bool
     resolveSupport          : Maybe CompletionItemResolveSupportClientCapabilities
     insertTextModeSupport   : Maybe InsertTextModeSupport
-  %runElab derive "CompletionItemClientCapabilities" [FromJSON, ToJSON]
+  %runElab derive "CompletionItemClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
   ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_completion
   public export
   record CompletionItemKindClientCapabilities where
     constructor MkCompletionItemKindClientCapabilities
     valueSet : Maybe (List CompletionItemKind)
-  %runElab derive "CompletionItemKindClientCapabilities" [FromJSON, ToJSON]
+  %runElab derive "CompletionItemKindClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_completion
 public export
@@ -198,7 +198,7 @@ record CompletionClientCapabilities where
   completionItem      : Maybe CompletionItemClientCapabilities
   completionItemKind  : Maybe CompletionItemKindClientCapabilities
   contextSupport      : Maybe Bool
-%runElab derive "CompletionClientCapabilities" [FromJSON, ToJSON]
+%runElab derive "CompletionClientCapabilities" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_completion
 public export
@@ -208,7 +208,7 @@ record CompletionOptions where
   triggerCharacters   : Maybe (List Char)
   allCommitCharacters : Maybe (List Char)
   resolveProvider     : Maybe Bool
-%runElab derive "CompletionOptions" [FromJSON, ToJSON]
+%runElab derive "CompletionOptions" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_completion
 public export
@@ -219,7 +219,7 @@ record CompletionRegistrationOptions where
   triggerCharacters   : Maybe (List Char)
   allCommitCharacters : Maybe (List Char)
   resolveProvider     : Maybe Bool
-%runElab derive "CompletionRegistrationOptions" [FromJSON, ToJSON]
+%runElab derive "CompletionRegistrationOptions" [FromJSONLSP, ToJSONLSP]
 
 namespace CompletionTriggerKind
   ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_completion
@@ -245,7 +245,7 @@ record CompletionContext where
   constructor MkCompletionContext
   triggerKind      : CompletionTriggerKind
   triggerCharacter : Maybe String
-%runElab derive "CompletionContext" [FromJSON, ToJSON]
+%runElab derive "CompletionContext" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_completion
 public export
@@ -256,7 +256,7 @@ record CompletionParams where
   workDoneToken      : Maybe ProgressToken
   partialResultToken : Maybe ProgressToken
   context            : Maybe CompletionContext
-%runElab derive "CompletionParams" [FromJSON, ToJSON]
+%runElab derive "CompletionParams" [FromJSONLSP, ToJSONLSP]
 
 ||| Refer to https://microsoft.github.io/language-server-protocol/specification.html#textDocument_completion
 public export
@@ -287,4 +287,4 @@ record CompletionList where
   constructor MkCompletionList
   isIncomplete : Bool
   items        : List CompletionItem
-%runElab derive "CompletionList" [FromJSON, ToJSON]
+%runElab derive "CompletionList" [FromJSONLSP, ToJSONLSP]
