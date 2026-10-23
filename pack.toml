@@ -2,4 +2,5 @@
 type = "github"
 url = "https://gitlab.com/avidela/idris2-jsonrpc"
 ipkg = "jsonrpc.ipkg"
-commit = "a24430a60f1cd2232a3253826e697d6838840dc8"
+commit = "b555f2cacedb39c7a0ff9a6e05d95a681fb051c4"
+
