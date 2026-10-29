@@ -104,7 +104,12 @@ renameKeywordOpts = {fieldNameModifier := renameKeyword} defaultOptions
 
 export
 ToJSONLSP : List Name -> ParamTypeInfo -> Res (List TopLevel)
-ToJSONLSP = customToJSON Export ({replaceMissingKeysWithNull := const True, fieldNameModifier := renameKeyword} defaultOptions)
+ToJSONLSP = customToJSON Export $
+  { replaceMissingKeysWithNull := const True
+  , fieldNameModifier := renameKeyword
+  , unwrapUnary := False
+  }
+  defaultOptions
 
 export
 FromJSONLSP : List Name -> ParamTypeInfo -> Res (List TopLevel)
